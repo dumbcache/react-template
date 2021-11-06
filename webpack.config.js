@@ -3,8 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry: "./src/index.js",
+    mode: "development",
     output: {
-        path: path.join(__dirname, "/dist"),
+        path: path.resolve(__dirname, "dist/"),
         filename: "bundle.js",
     },
     module: {
@@ -18,6 +19,7 @@ module.exports = {
             },
             {
                 test: /\.(sa|sc|c)ss$/,
+                exclude: /node_modules/,
                 use: [
                     // Creates `style` nodes from JS strings
                     "style-loader",
@@ -29,10 +31,12 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                exclude: /node_modules/,
                 type: "asset/resource",
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                exclude: /node_modules/,
                 type: "asset/resource",
             },
         ],
@@ -43,7 +47,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: "Output Management",
-            template: "./src/index.html",
+            template: "./public/index.html",
         }),
     ],
 };
