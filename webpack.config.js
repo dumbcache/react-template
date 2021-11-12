@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: "./src/index.js",
@@ -26,6 +27,7 @@ module.exports = {
                     "style-loader",
                     // Translates CSS into CommonJS
                     "css-loader",
+                    MiniCssExtractPlugin.loader,
                     // Compiles Sass to CSS
                     "sass-loader",
                 ],
@@ -53,5 +55,6 @@ module.exports = {
         new webpack.ProvidePlugin({
             React: "react",
         }),
+        new MiniCssExtractPlugin(),
     ],
 };
